@@ -1,0 +1,26 @@
+{
+  "name": "kingapi",
+  "version": "1.0.0",
+  "description": "Kinguila Hoje WebScrapping API",
+  "main": "src/app.js",
+  "scripts": {
+    "serve": "node src/api",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e200/kingapi.git"
+  },
+  "author": "Eleandro Duzentos <eleandro@inbox.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/e200/kingapi/issues"
+  },
+  "homepage": "https://github.com/e200/kingapi#readme",
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "puppeteer": "^1.11.0"
+  }
+}
