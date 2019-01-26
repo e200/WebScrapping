@@ -1,5 +1,5 @@
 const cheerio   = require('cheerio')
-const puppeteer = require('puppeteer')
+const request = require('request-promise')
 
 const { URL } = require('./config/dataSource')
 
@@ -12,15 +12,13 @@ module.exports = (app) => {
          */
         // const data = await scrapper.scrap(URL, '.header-content .row .col-xs-12')
 
-        const browser = await puppeteer.launch()
-        const page    = await browser.newPage()
+        const html = await request.get(URL)
 
-        await page.goto(URL)
-        const html = await page.content()
+        const $ = await cheerio.load(html)
 
-        // cheerio.
+        const text = $('.header-content .row .col-xs-12').text()
 
-        res.send(true)
+        res.send(text)
       })
     }
   }
