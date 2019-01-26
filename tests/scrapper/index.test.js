@@ -1,23 +1,17 @@
-let loaderMock = {
-  load: (source) => {
-    return '<h1>HTML content</h1>'
-  }
-}
 
-let contentScrapper = {
-  scrap: (content, seletor) => {
-    return true
-  }
-}
+const loaderMock = jest.fn()
+const contentScrapperMock = jest.fn()
 
 const scrapper = require('../../src/scrapper')
 
-let scapperInstance = scrapper(loaderMock, contentScrapper)
-
 test(
-  'Call `loader.load(source)` and `contentScrapper.scrap(conent)`',
+  'Call the loader and contentScrapper',
   async () => {
-    const scrap = await scapperInstance.resolve(null, null)
+    loaderMock.load           = () => '<h1>HTML Content</h1>'
+    contentScrapperMock.scrap = () => true
+
+    const scrapperObject = scrapper(loaderMock, contentScrapperMock)
+    const scrap          = await scrapperObject.resolve(null, null)
 
     expect(typeof scrap).toBe('object')
     expect(scrap).toHaveProperty('data')
@@ -26,18 +20,13 @@ test(
     expect(scrap.data).toBe(true)
 })
 
-loaderMock = {
-  load: (source) => {
-    return null
-  }
-}
-
-scapperInstance = scrapper(loaderMock, contentScrapper)
-
 test(
-  'Must return an error and no data',
+  'Test behavior when loader return a non string',
   async () => {
-    const scrap = await scapperInstance.resolve(null, null)
+    loaderMock.load = () => false
+
+    const scrapperObject = scrapper(loaderMock, null)
+    const scrap          = await scrapperObject.resolve(null, null)
 
     expect(typeof scrap).toBe('object')
     expect(scrap).toHaveProperty('data')
