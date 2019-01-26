@@ -1,5 +1,9 @@
+const cheerio = require('cheerio')
+
 module.exports = {
   scrap: async (content, selector) => {
-    return 'null'
+    const $ = await cheerio.load(content)
+
+    return $(selector).text()
   }
 }
