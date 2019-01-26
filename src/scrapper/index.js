@@ -1,4 +1,4 @@
-module.exports = (loader, scrapper) => {
+module.exports = (loader, contentScrapper) => {
   return {
     /**
      * Doesn't know what kind of `source`
@@ -11,15 +11,16 @@ module.exports = (loader, scrapper) => {
      * to learn it yet.
      */
     resolve: async (source, selector) => {
+      const scrap   = { error: null, data: null }
       const content = await loader.load(source)
 
-      if (typeof content !== string) {
-        throw 'Error'
+      if (typeof content === string) {
+        scrap.data = await contentScrapper.scrap(content, selector)
+      } else {
+        scrap.error = 'The content given by the loader isn\'t a string'
       }
 
-      const data = scrapper.scrap(content, selector)
-
-      return data
+      return scrap
     }
   }
 }
