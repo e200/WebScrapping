@@ -2,6 +2,12 @@ const request = require('request-promise')
 
 module.exports = {
   load: async (source) => {
-    return await request.get(source)
+    try {
+      const HTMLContent = await request.get(source)
+
+      return HTMLContent
+    } catch (ex) {
+      console.log(ex)
+    }
   }
 }
