@@ -4,7 +4,8 @@
   "description": "Kinguila Hoje WebScrapping API",
   "main": "src/app.js",
   "scripts": {
-    "serve": "nodemon src/api",
+    "start": "node src/api",
+    "watch": "nodemon src/api",
     "test": "jest"
   },
   "repository": {
