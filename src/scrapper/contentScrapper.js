@@ -1,5 +1,5 @@
 module.exports = {
-  scrap: (content, selector) => {
-    return null
+  scrap: async (content, selector) => {
+    return 'null'
   }
 }

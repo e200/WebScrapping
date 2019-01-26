@@ -1,5 +1,5 @@
 module.exports = {
-  load: (source) => {
-    return null
+  load: async (source) => {
+    return 'null'
   }
 }
