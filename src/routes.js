@@ -7,6 +7,11 @@ module.exports = (app) => {
   return {
     register: () => {
       app.get('/', async (req, res) => {
+        /**
+         * This is how I think it will be. :)
+         */
+        // const data = await scrapper.scrap(URL, '.header-content .row .col-xs-12')
+
         const browser = await puppeteer.launch()
         const page    = await browser.newPage()
 
