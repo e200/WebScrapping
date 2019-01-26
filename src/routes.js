@@ -1,9 +1,9 @@
-const router = require('express').Router()
-
-module.exports = {
-  register: () => {
-    router.get('/', () => {
-      return true
-    })
+module.exports = (app) => {
+  return {
+    register: () => {
+      app.get('/', (req, res) => {
+        res.send(true)
+      })
+    }
   }
 }
