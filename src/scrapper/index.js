@@ -14,7 +14,7 @@ module.exports = (loader, contentScrapper) => {
       const scrap   = { error: null, data: null }
       const content = await loader.load(source)
 
-      if (typeof content === string) {
+      if (typeof content === 'string') {
         scrap.data = await contentScrapper.scrap(content, selector)
       } else {
         scrap.error = 'The content given by the loader isn\'t a string'
