@@ -1,12 +1,10 @@
 const express = require('express')
-
 const app = express()
 
-const config = require('./config')
+const server = require('./server')(app)
 
-const server = app.listen(config.server.PORT, config.server.PORT)
-  .on('listening', () => {
-    const { address, port } = server.address()
+server.start()
 
-    console.log(`Serving API at host ${address}:${port}`)
-  })
+process
+  .on('uncaughtException', server.stop)
+  .on('SIGTERM', server.stop)
