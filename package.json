@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/e200/kingapi.git"
   },
+  "engines": {
+    "node": "10.x"
+  },
   "author": "Eleandro Duzentos <eleandro@inbox.ru>",
   "license": "ISC",
   "bugs": {
