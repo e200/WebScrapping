@@ -21,11 +21,13 @@
     "url": "https://github.com/e200/kingapi/issues"
   },
   "homepage": "https://github.com/e200/kingapi#readme",
-  "devDependencies": {
+  "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
-    "jest": "^24.0.0",
-    "nodemon": "^1.18.9",
     "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "jest": "^24.0.0",
+    "nodemon": "^1.18.9"
   }
 }
